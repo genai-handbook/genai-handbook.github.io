@@ -1,0 +1,284 @@
+/* main */
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden; /* Ensure no horizontal scrolling on the entire page */
+  overflow-y: auto; /* Ensure vertical scrolling is allowed */
+}
+
+html, body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  color: #222;
+}
+
+body {
+  padding-top: 60px; /* Adjust this value to match the height of the title bar */
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column; /* Ensure it can expand vertically */
+  width: 100%;
+  min-height: 100%; /* Ensure it takes at least the full height */
+}
+
+#content {
+  top: 60px;
+  /* flex: 1; Take up remaining space in the flex container */
+  margin-left: 250px; /* Space for the sidebar when open */
+  padding: 20px; /* Padding to avoid overlap with the title bar */
+  width: calc(100% - 270px); /* Fixed width accounting for sidebar and padding */
+  max-width: 2000px; /* Set maximum width for content */
+  transition: all 0.3s; /* Smooth transition effect */
+  overflow-y: auto;
+}
+
+#content.active {
+  margin-left: 0; /* No margin when sidebar is collapsed */
+  width: calc(100% - 40px); /* Adjust width when sidebar is collapsed */
+  padding-right: 20px; /* Keep text width consistent */
+}
+
+/* sidebar */
+#sidebar {
+  position: fixed;
+  top: 60px;
+  bottom: 0;
+  left: 0;
+  width: 250px; /* Adjust this value for sidebar width */
+  background: #8796db;
+  color: #fff;
+  transition: transform 0.3s ease-in-out, left 0.3s ease-in-out;
+  z-index: 1000; /* Ensure the sidebar is on top */
+  overflow-y: auto; /* Enable vertical scrolling for the sidebar */
+}
+
+#sidebar.active {
+  left: -250px; /* Adjust this value for sidebar width */
+}
+
+#sidebar ul.components {
+  padding: 5px 0;
+}
+
+#sidebar ul p {
+  color: #fff;
+  padding: 5px;
+}
+
+#sidebar ul li a {
+  padding: 5px;
+  font-size: 0.9em; /* Smaller text size */
+  display: block;
+  color: #fff; /* Sidebar link font color (unclicked) */
+  text-decoration: none; /* Remove underline */
+}
+
+#sidebar ul li a:visited {
+  color: #fff; /* Sidebar link font color (already clicked) */
+}
+
+#sidebar ul li a:hover {
+  color: #8796db;
+  background: #fff;
+}
+
+
+#sidebar ul li.active > a, a[aria-expanded="true"] {
+  color: #fff;
+  background: #8796db;
+}
+
+#sidebarCollapse {
+  width: 40px;
+  height: 40px;
+  background: #7771b5;
+  cursor: pointer;
+  color: #fff;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#sidebarCollapse i {
+  font-size: 1.2em;
+}
+
+#sidebarCollapse {
+  margin-right: 20px; /* Add some space between the button and the title */
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 1024px) {
+  body.sidebar-open #content {
+    margin-left: 0;
+  }
+
+  #sidebar {
+    width: 100%;
+    transform: translateX(-100%);
+  }
+
+  #sidebar.active {
+    transform: translateX(0);
+    left: 0px;
+  }
+
+  #content {
+    margin-left: 0;
+    width: 100%;
+    padding-right: 10px;
+  }
+
+  #content.active {
+    margin-left: 0;
+    width: 100%;
+    padding-right: 10px;
+  }
+
+  body.sidebar-open #content {
+    overflow: hidden; /* Prevents text reflow on mobile */
+  }
+}
+
+
+#title-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px; /* Adjust this value for title bar height */
+  background: #8796db;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 1100; /* Ensure the title bar is above other elements */
+  color: #fff; /* Title bar font color */
+}
+
+#title-bar h1 {
+  margin: 0;
+  flex: 1;
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide any overflow text */
+  text-overflow: ellipsis; /* Show ellipsis for overflow text */
+}
+
+#title-bar a {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+}
+
+#top{ position: absolute; top: 0; }
+
+/* title bar */
+
+.page-title {
+  margin: 0;
+  padding: 0;
+  margin-left: 20px;
+  font-size: 1.5em; /* Adjust this value for title font size */
+}
+
+.page-title {
+  display: inline;
+}
+
+.short-title {
+  display: none;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 1024px) {
+  .page-title {
+    display: none;
+  }
+  
+  .short-title {
+    display: inline;
+    font-size: 20px; /* Adjust font size for smaller screens */
+    padding: 0 10px; /* Adjust padding for smaller screens */
+  }
+}
+
+
+.section {
+  margin-bottom: 10px; /* Add margin between sections */
+  padding: 0 10px;
+}
+
+.section-header {
+  cursor: pointer;
+  padding: 10px 20px 10px 10px; /* Adjust padding */
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  margin: 0;
+  position: relative;
+}
+
+.section-header h1 {
+  margin: 0;
+  right: 10px;
+  font-size: 32px; /* Smaller text size */
+}
+
+.section-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-header-content {
+  display: flex;
+  max-width: calc(100% - 30px);
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.section-header::after {
+  content: '\25B6'; /* Right arrow */
+  font-size: 1.2em;
+  position: absolute;
+  right: 10px; /* Adjust this value as needed for spacing */
+  top: 50%; /* Center vertically */
+  transform: translateY(-50%);
+  transition: transform 0.3s;
+}
+
+.section-header.active::after {
+  transform: translateY(-50%) rotate(90deg); /* Rotate arrow down */
+}
+
+.section-summary {
+  font-size: 1em; /* Smaller text size */
+  color: #666;
+  margin-top: 5px;
+}
+
+.section-content {
+  display: none;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-top: none;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 1024px) {
+  .section {
+    padding: 0; /* Remove padding on mobile */
+  }
+
+  .section-header {
+    padding: 10px; /* Adjust padding on mobile */
+  }
+
+  .section-header-content {
+    max-width: calc(100% - 40px); /* Adjust the value as needed */
+  }
+}

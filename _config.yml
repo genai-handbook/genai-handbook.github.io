@@ -1,0 +1,29 @@
+title: Generative AI Handbook
+description: "A Roadmap for Learning Resources"
+baseurl: ""  # the subpath of your site, e.g. /blog
+url: "http://example.com"  # the base hostname & protocol for your site
+
+markdown: kramdown
+
+plugins:
+  - jekyll-toc
+
+toc:
+  min_level: 1
+  max_level: 6
+  list_class: toc
+
+kramdown:
+  input: GFM
+  auto_ids: true
+  toc_levels: 1..6
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
+
+syntax_highlighter: coderay
+syntax_highlighter_opts:
+  wrap: div
+  line_numbers: inline
+  line_number_start: 1
+  tab_width: 4
+  bold_every: 10
+  css: style

@@ -1,5 +1,6 @@
 
-In this section, we'll explore a number of concepts which will take us from the decoder-only Transformer architecture towards understanding the implementation choices and tradeoffs behind many of today's frontier LLMs. If you first want a birds-eye view the of topics in section and some of the following ones, the post ["Understanding Large Language Models"](https://magazine.sebastianraschka.com/p/understanding-large-language-models) by Sebastian Raschka is a nice summary of what the LLM landscape looks like (at least up through mid-2023). 
+In this section, we'll explore a number of concepts which will take us from the decoder-only Transformer architecture towards understanding the implementation choices and tradeoffs behind many of today's frontier LLMs. If you first want a birds-eye view the of topics in section and some of the following ones, the post ["Understanding Large Language Models"](https://magazine.sebastianraschka.com/p/understanding-large-language-models) by Sebastian Raschka is a nice summary of what the LLM landscape looks like (at least up through mid-2023). For a visual overview of the scale and processing done by GPT-2 (small), nano-GPT, GPT-2 (XL), and GPT-3, the [LLM Visualization](https://bbycroft.net/llm) by Brendan Bycroft provides a detailed guide ([source](https://github.com/bbycroft/llm-viz)).
+
 
 <h2>Tokenization</h2>
 

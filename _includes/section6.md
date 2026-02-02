@@ -17,7 +17,7 @@ See this [blog post](https://jaykmody.com/blog/speculative-sampling/) from Jay M
 
 <h2>FlashAttention</h2>
 
-Computing attention matrices tends to be a primary bottleneck in inference and training for Transformers, and FlashAttention has become one of the most widely-used techniques for speeding it up. In contrast to some of the techniques we'll see in [Section 7](#s7) which _approximate_ attention with a more concise representation (occurring some representation error as a result), FlashAttention is an _exact_ representation whose speedup comes from hardware-aware impleemntation. It applies a few tricks --- namely, tiling and recomputation --- to decompose the expression of attention matrices, enabling significantly reduced memory I/O and faster wall-clock performance (even with slightly increasing the required FLOPS).
+Computing attention matrices tends to be a primary bottleneck in inference and training for Transformers, and FlashAttention has become one of the most widely-used techniques for speeding it up. In contrast to some of the techniques we'll see in [Section 7](#s7) which _approximate_ attention with a more concise representation (occurring some representation error as a result), FlashAttention is an _exact_ representation whose speedup comes from hardware-aware implementation. It applies a few tricks --- namely, tiling and recomputation --- to decompose the expression of attention matrices, enabling significantly reduced memory I/O and faster wall-clock performance (even with slightly increasing the required FLOPS).
 
 Resources:
 - [Talk](https://www.youtube.com/watch?v=gMOAud7hZg4) by Tri Dao (author of FlashAttention)
